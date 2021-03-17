@@ -1,19 +1,24 @@
 const db = require('./db.js');
-const { STRING, NUMBER, DATE, TEXT } = db.Sequelize;
+const { STRING, DATE, TEXT } = db.Sequelize;
 
 const Title = db.define('title', {
   name: {
     type: STRING,
     allowNull: false
   },
+  cover: {
+    type: STRING,
+    defaultValue: '../../public/assets/img/placeholder-image.webp'
+  },
   link: {
-    type: STRING
+    type: STRING,
+    defaultValue: 'To be updated'
   },
   current_episode: {
-    type: NUMBER
+    type: STRING
   },
   total_episode: {
-    type: NUMBER
+    type: STRING
   },
   started_on: {
     type: DATE
@@ -21,8 +26,11 @@ const Title = db.define('title', {
   finished_on: {
     type: DATE
   },
-  personal_note: {
+  rating: {
     type: STRING
+  },
+  personal_note: {
+    type: TEXT
   }
 });
 

@@ -1,0 +1,75 @@
+* {
+  font-family: 'Alegreya Sans', sans-serif;
+  background-color: #FBF1E0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'Fascinate', cursive;
+  color: #FBF1E0;
+  text-shadow: #e98847 1px 0 10px;
+  text-align: center;
+}
+
+.container {
+  border-radius: 20px;
+  display:flex;
+  width: 70%;
+  margin: auto;
+}
+
+.container * {
+  background-color: #FFFBF1;
+}
+
+/* styles for category section */
+.category {
+  width: 25%;
+  border-radius: 10px 0 0 10px;
+}
+
+.each-category {
+  font-size: 20px;
+  font-weight: bolder;
+  /* text-decoration: rgb(254, 247, 239) wavy underline; */
+  padding: 10px;
+  background-color: #f2b276;
+  box-shadow:
+    inset 45px 20px 80px -36px #f29640,
+    inset 50px 40px 109px -38px #e1325b;
+  color: rgb(254, 247, 239);
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.new-category {
+  font-size: 50px;
+  font-weight: bolder;
+  text-align: center;
+  background-color: #cba6e3;
+  box-shadow:
+    inset 45px 20px 80px -36px #a34ade,
+    inset 50px 40px 109px -38px #246596;
+  color: rgb(254, 247, 239);
+  width: 150px;
+  height: 60px;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* styles for category detail section */
+.category-detail {
+  width: 25%;
+}
+
+/* styles for title detail section */
+.title-detail {
+  width: 50%;
+  border-radius: 0 10px 10px 0;
+}

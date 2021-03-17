@@ -1,18 +1,32 @@
-const {db, Category, Status, Title} = require('./db');
+const { syncAndSeed } = require('./db');
+const path = require('path');
+const express = require('express');
 
-const syncAndSeed = async() => {
+const PORT = process.env.PORT || 8080;
 
-  await db.sync({force: true})
+const app = express();
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
+app.get('/', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'))
+});
+
+app.use('/api', require('./api'));
+
+const init = () => {
   try {
-    const [manga,anime,tvShows,book,game] = Promise.all(['MANGA', 'ANIME', 'TV SHOWS', 'BOOK', 'GAME'].map(name => Category.create({name})));
-
-    const [readyToStart,inProgress,finished] = Promise.all(['READY TO START', 'IN PROGRESS', 'FINISHED'].map(name => Status.create({name})));
-
-    
-
-  } catch(err) {
+    syncAndSeed();
+    console.log('synd and seed success!')
+    app.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}`)
+    })
+  }
+  catch(err) {
     console.log(err)
   }
-
 }
+
+init();
+
+module.exports = app;
 
