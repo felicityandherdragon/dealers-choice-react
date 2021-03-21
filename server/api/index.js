@@ -21,11 +21,11 @@ router.get('/categories', async(req,res,next) => {
   }
 })
 
-router.get('/cagegories/:categoryId', async(req,res,next) => {
+router.get('/categories/:categoryId', async(req,res,next) => {
   try {
     const currentCategory = await Title.findAll({
       where: {
-        categoryId: req.body.categoryId
+        categoryId: req.params.categoryId
       }
     })
     res.send(currentCategory);

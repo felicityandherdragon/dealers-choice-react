@@ -44,7 +44,7 @@ const syncAndSeed = async() => {
 
     const dennohCoil = await Title.create({
       name: 'Den-noh Coil',
-      cover: '../../public/assets/img/dindcover.jpeg',
+      cover: '../../public/assets/img/dennohcoilcover.webp',
       current_episode: '26',
       total_episode: '26',
       categoryId: anime.id,
