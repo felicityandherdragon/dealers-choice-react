@@ -16,11 +16,10 @@ class App extends React.Component {
     return (
       <Router>
         <div className='container'>
-          {/* <Route path='/' component={Category} /> */}
           <Category />
           <Route exact path='/' component={AddNew} />
           <Route path='/category/:id' component={CategoryDetail} />
-          <TitleDetail />
+          <Route path='/category/title/:id' component={TitleDetail} />
         </div>
       </Router>
     )

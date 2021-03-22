@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { getTitleDetail } from '../store.js';
 
 const CategoryDetail = (props) => {
-  console.log(props);
   return (
     <div className='category-detail'>
-      <p>This is the detail section for each category</p>
       {props.titles.map(each => (
         <div className='each-title' key={each.id}>
-          <img src={each.cover} />
-          {each.name}
-          <br />
-          {each.link}
+          <Link to={'/category/title/'+each.id}>
+          <img src={each.cover} onClick={()=>props.getTitleDetail(each.id)} />
+          </Link>
+          <ul>
+            <li>Name: {each.name}</li>
+            <li>Link: {each.link}</li>
+          </ul>
         </div>
       ))}
     </div>
@@ -25,4 +27,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(CategoryDetail);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getTitleDetail: (titleId) => {
+      return dispatch(getTitleDetail(titleId));
+    }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CategoryDetail);

@@ -12,6 +12,7 @@ router.get('/all', async(req,res,next) => {
   }
 })
 
+
 router.get('/categories', async(req,res,next) => {
   try {
     const allCategories = await Category.findAll();
@@ -29,6 +30,20 @@ router.get('/categories/:categoryId', async(req,res,next) => {
       }
     })
     res.send(currentCategory);
+  } catch(err) {
+    next(err)
+  }
+})
+
+router.get('/category/title/:titleId', async(req,res,next) => {
+  try {
+    const selectedTitle = await Title.findAll({
+      include: [Category, Status],
+      where: {
+        id: req.params.titleId
+      }
+    })
+    res.send(selectedTitle);
   } catch(err) {
     next(err)
   }

@@ -5,11 +5,13 @@ import thunkMiddleware from 'redux-thunk'
 
 const initialState = {
   category: [],
-  titles: []
+  titles: [],
+  selectedTitle: {}
 }
 
 const GOT_CATEGORY_FROM_SERVER = 'GOT_CATEGORY_FROM_SERVER';
 const GOT_CATEGORY_DETAIL = 'GOT_CATEGORY_DETAIL';
+const GOT_TITLE_DETAIL = 'GOT_TITLE_DETAIL';
 
 const setCategory = (category) => {
   return {
@@ -39,6 +41,20 @@ export const setCategoryDetail = (categoryId) => {
   }
 }
 
+const _getTitleDetail = (selectedTitle) => {
+  return {
+    type: GOT_TITLE_DETAIL,
+    selectedTitle
+  }
+}
+
+export const getTitleDetail = (titleId) => {
+  return async(dispatch) => {
+    const selectedTitle = (await axios.get(`/api/category/title/${titleId}`)).data;
+    dispatch(_getTitleDetail(selectedTitle));
+  }
+}
+
 const reducer = (state = initialState, action) => {
   if (action.type === GOT_CATEGORY_FROM_SERVER) {
     const category = action.category;
@@ -47,6 +63,10 @@ const reducer = (state = initialState, action) => {
   else if (action.type === GOT_CATEGORY_DETAIL) {
     const titles = action.titles;
     return {...state, titles};
+  }
+  else if (action.type === GOT_TITLE_DETAIL) {
+    const selectedTitle = action.selectedTitle;
+    return {...state, selectedTitle};
   }
   return state;
 }
