@@ -49,4 +49,13 @@ router.get('/category/title/:titleId', async(req,res,next) => {
   }
 })
 
+router.post('/add', async(req,res,next) => {
+  try {
+    console.log(req.body);
+    res.status(201).send(await Title.create(req.body));
+  } catch(err) {
+    next(err)
+  }
+})
+
 module.exports = router;

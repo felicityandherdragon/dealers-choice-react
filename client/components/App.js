@@ -18,6 +18,7 @@ class App extends React.Component {
         <div className='container'>
           <Category />
           <Route exact path='/' component={AddNew} />
+          <Route exact path='/add' component={AddNew} />
           <Route path='/category/:id' component={CategoryDetail} />
           <Route path='/category/title/:id' component={TitleDetail} />
         </div>

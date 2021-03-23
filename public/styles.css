@@ -78,6 +78,12 @@ h1 {
   margin-bottom: 10px;
 }
 
+.new-category a {
+  background-color: transparent;
+  color: rgb(254, 247, 239);
+  text-decoration: none;
+}
+
 /* styles for category detail section */
 .category-detail {
   padding-top: 20px;
@@ -93,8 +99,8 @@ h1 {
 }
 
 .progress {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   display: flex;
   justify-content: center;
 }
@@ -120,4 +126,9 @@ h1 {
 /* styles for add new section */
 .add-new {
   width: 75%;
+}
+
+.add-new form {
+  display:flex;
+  flex-direction: column;
 }

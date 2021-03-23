@@ -6,12 +6,14 @@ import thunkMiddleware from 'redux-thunk'
 const initialState = {
   category: [],
   titles: [],
-  selectedTitle: {}
+  selectedTitle: {},
+  newTitle: {}
 }
 
 const GOT_CATEGORY_FROM_SERVER = 'GOT_CATEGORY_FROM_SERVER';
 const GOT_CATEGORY_DETAIL = 'GOT_CATEGORY_DETAIL';
 const GOT_TITLE_DETAIL = 'GOT_TITLE_DETAIL';
+const ADD_NEW = 'ADD_NEW';
 
 const setCategory = (category) => {
   return {
@@ -55,6 +57,31 @@ export const getTitleDetail = (titleId) => {
   }
 }
 
+const _addNew = (newTitle) => {
+  return {
+    type: ADD_NEW,
+    newTitle
+  }
+}
+
+export const addNew = (title, history) => {
+  return async(dispatch) => {
+    console.log(title);
+    const newTitle = (await axios.post('/api/add', title)).data;
+    console.log(newTitle);
+    dispatch(_addNew(newTitle));
+    history.push('/');
+  }
+}
+
+// export const createTodo = (todo, history) => {
+//   return async (dispatch) => {
+//     const { data: created } = await axios.post('/api/todos', todo);
+//     dispatch(_createTodo(created));
+//     history.push('/');
+//   };
+// };
+
 const reducer = (state = initialState, action) => {
   if (action.type === GOT_CATEGORY_FROM_SERVER) {
     const category = action.category;
@@ -67,6 +94,10 @@ const reducer = (state = initialState, action) => {
   else if (action.type === GOT_TITLE_DETAIL) {
     const selectedTitle = action.selectedTitle;
     return {...state, selectedTitle};
+  }
+  else if (action.type === ADD_NEW) {
+    const newTitle = action.title;
+    return {...state, newTitle};
   }
   return state;
 }

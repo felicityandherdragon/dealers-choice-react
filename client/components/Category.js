@@ -15,7 +15,9 @@ const Category = (props) => {
         </div>
       ))}
       <div className='new-category'>
+        <Link to='/add'>
         +
+        </Link>
       </div>
     </div>
   )

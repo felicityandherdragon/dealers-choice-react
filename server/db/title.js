@@ -1,5 +1,5 @@
 const db = require('./db.js');
-const { STRING, DATE, TEXT } = db.Sequelize;
+const { STRING, DATE, TEXT, INTEGER, VIRTUAL } = db.Sequelize;
 
 const Title = db.define('title', {
   name: {
@@ -14,23 +14,34 @@ const Title = db.define('title', {
     type: STRING,
     defaultValue: 'To be updated'
   },
-  current_episode: {
-    type: STRING
+  currentEpisode: {
+    type: INTEGER
   },
-  total_episode: {
-    type: STRING
+  totalEpisode: {
+    type: INTEGER,
+    defaultValue: 999
   },
-  started_on: {
+  startedOn: {
     type: DATE
   },
-  finished_on: {
+  finishedOn: {
     type: DATE
   },
   rating: {
     type: STRING
   },
-  personal_note: {
+  personalNote: {
     type: TEXT
+  },
+  progress: {
+    type: VIRTUAL,
+    get: function() {
+      if (this.currentEpisode && this.totalEpisode) {
+        return Math.floor(this.currentEpisode / this.totalEpisode * 100)
+      } else {
+        return 0;
+      }
+    },
   }
 });
 
