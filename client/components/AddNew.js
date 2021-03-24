@@ -47,6 +47,8 @@ class AddNew extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='name'>Title name</label>
           <input type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
+          <label htmlFor='cover'>Cover</label>
+          <input type='text' name='cover' value={this.state.cover} onChange={this.handleChange}/>
           <label>
           Status
             <br/>

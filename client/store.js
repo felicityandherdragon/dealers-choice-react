@@ -14,6 +14,14 @@ const GOT_CATEGORY_FROM_SERVER = 'GOT_CATEGORY_FROM_SERVER';
 const GOT_CATEGORY_DETAIL = 'GOT_CATEGORY_DETAIL';
 const GOT_TITLE_DETAIL = 'GOT_TITLE_DETAIL';
 const ADD_NEW = 'ADD_NEW';
+const DELETE_TITLE = 'DELETE_TITLE';
+
+const _deleteTitle = (selectedTitle) => {
+  return {
+    type: types.DELETE_TITLE,
+    selectedTitle
+  }
+}
 
 const setCategory = (category) => {
   return {
@@ -73,14 +81,6 @@ export const addNew = (title, history) => {
     history.push('/');
   }
 }
-
-// export const createTodo = (todo, history) => {
-//   return async (dispatch) => {
-//     const { data: created } = await axios.post('/api/todos', todo);
-//     dispatch(_createTodo(created));
-//     history.push('/');
-//   };
-// };
 
 const reducer = (state = initialState, action) => {
   if (action.type === GOT_CATEGORY_FROM_SERVER) {

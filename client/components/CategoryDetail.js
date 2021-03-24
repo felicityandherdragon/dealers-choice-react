@@ -7,14 +7,14 @@ const CategoryDetail = (props) => {
   return (
     <div className='category-detail'>
       {props.titles.map(each => (
-        <div className='each-title' key={each.id}>
+        <div className='each-title' key={each.id} onClick={()=>props.getTitleDetail(each.id)}>
           <Link to={'/category/title/'+each.id}>
-          <img src={each.cover} onClick={()=>props.getTitleDetail(each.id)} />
-          </Link>
+          <img src={each.cover} />
           <ul>
             <li>Name: {each.name}</li>
             <li>Link: {each.link}</li>
           </ul>
+          </Link>
         </div>
       ))}
     </div>

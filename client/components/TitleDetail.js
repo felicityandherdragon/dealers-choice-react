@@ -18,8 +18,8 @@ const TitleDetail = (props) => {
               percent={props.selectedTitle[0].progress}
               strokeWidth={10}
               strokeColor={{
-                '0%': '#f29640',
-                '100%': '#cba6e3',
+                '0%': '#91c2f7',
+                '100%': '#f9c627',
                 }}
             />
             </li>
@@ -43,7 +43,9 @@ const TitleDetail = (props) => {
     }
   } else {
     return (
-      <p>Loading...</p>
+      <div className='title-detail'>
+        <p>Please select a title to see details</p>
+      </div>
     )
   }
 }

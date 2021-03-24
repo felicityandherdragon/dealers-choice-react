@@ -58,4 +58,14 @@ router.post('/add', async(req,res,next) => {
   }
 })
 
+router.delete('/category/title/:titleId', async(req,res,next) => {
+  try {
+    const titleToDelete = await Title.findByPk(req.params.titleId);
+    await titleToDelete.destroy();
+    res.send(titleToDelete);
+  } catch(err) {
+    next(err)
+  }
+})
+
 module.exports = router;

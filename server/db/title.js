@@ -8,7 +8,7 @@ const Title = db.define('title', {
   },
   cover: {
     type: STRING,
-    defaultValue: '../../public/assets/img/placeholder-image.webp'
+    defaultValue: '../../public/assets/img/placeholder.jpeg'
   },
   link: {
     type: STRING,
