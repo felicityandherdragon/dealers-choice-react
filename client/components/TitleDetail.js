@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Line, Circle } from 'rc-progress';
+import { deleteTitle } from '../store';
 
 const TitleDetail = (props) => {
   console.log(props);
@@ -31,8 +33,12 @@ const TitleDetail = (props) => {
             <li><h3>Personal note</h3><p>{props.selectedTitle[0].personalNote}</p></li>
           </ul>
           <div className='CTAs'>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button>
+              <Link to={'/category/title/edit'}>
+              Edit
+              </Link>
+            </button>
+            <button onClick={() => props.deleteTitle(props.selectedTitle[0])}>Delete</button>
           </div>
         </div>
       )
@@ -56,4 +62,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(TitleDetail);
+const mapDispatchToProps = (dispatch, { history }) => {
+  return {
+    deleteTitle: (selectedTitle) => {
+      return dispatch(deleteTitle(selectedTitle, history))
+    }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TitleDetail);

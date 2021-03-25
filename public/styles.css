@@ -123,12 +123,31 @@ h1 {
   font-size: 15px;
 }
 
+.CTAs a {
+  background-color: transparent;
+  color: rgb(254, 247, 239);
+  text-decoration: none;
+}
+
 /* styles for add new section */
 .add-new {
   width: 75%;
 }
 
 .add-new form {
+  display:flex;
+  flex-direction: column;
+}
+
+/* styles for edit section */
+.edit {
+  width: 50%;
+  padding-right: 20px;
+  border-radius: 0 10px 10px 0;
+  padding-bottom: 20px;
+}
+
+.edit form {
   display:flex;
   flex-direction: column;
 }

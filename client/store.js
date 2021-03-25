@@ -15,11 +15,34 @@ const GOT_CATEGORY_DETAIL = 'GOT_CATEGORY_DETAIL';
 const GOT_TITLE_DETAIL = 'GOT_TITLE_DETAIL';
 const ADD_NEW = 'ADD_NEW';
 const DELETE_TITLE = 'DELETE_TITLE';
+const UPDATE_TITLE = 'UPDATE_TITLE';
 
 const _deleteTitle = (selectedTitle) => {
   return {
-    type: types.DELETE_TITLE,
+    type: DELETE_TITLE,
     selectedTitle
+  }
+}
+
+export const deleteTitle = (selectedTitle, history) => {
+  return async (dispatch) => {
+    await axios.delete(`/api/category/title/${selectedTitle.id}`);
+    dispatch(_deleteTitle(selectedTitle));
+    history.push('/');
+  };
+}
+
+const _updateTitle = (selectedTitle) => {
+  return {
+    type: UPDATE_TITLE,
+    selectedTitle
+  }
+}
+
+export const updateTitle = (selectedTitle, history) => {
+  return async(dispatch) => {
+    const updatedTitle = (await axios.put(`/category/title/${selectedTitle.id}`, selectedTitle)).data;
+    dispatch(_updateTitle(updatedTitle));
   }
 }
 
@@ -96,9 +119,18 @@ const reducer = (state = initialState, action) => {
     return {...state, selectedTitle};
   }
   else if (action.type === ADD_NEW) {
-    const newTitle = action.title;
+    const newTitle = action.newTitle;
     return {...state, newTitle};
   }
+  else if (action.type === DELETE_TITLE) {
+    const selectedTitle = {};
+    return {...state, selectedTitle};
+  }
+  else if (action.type === UPDATE_TITLE) {
+    const selectedTitle = action.selectedTitle;
+    return {...state, selectedTitle};
+  }
+
   return state;
 }
 

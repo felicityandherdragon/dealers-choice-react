@@ -15,7 +15,11 @@ router.get('/all', async(req,res,next) => {
 
 router.get('/categories', async(req,res,next) => {
   try {
-    const allCategories = await Category.findAll();
+    const allCategories = await Category.findAll({
+      order: [
+        ['id']
+      ]
+    });
     res.send(allCategories);
   } catch(err) {
     next(err)
@@ -53,6 +57,15 @@ router.post('/add', async(req,res,next) => {
   try {
     console.log(req.body);
     res.status(201).send(await Title.create(req.body));
+  } catch(err) {
+    next(err)
+  }
+})
+
+router.put('/category/title/:titleId', async(req,res,next) => {
+  try {
+    const titleToUpdate = await Title.findByPk(req.params.titleId);
+    res.send(await titleToUpdate.update(req.body));
   } catch(err) {
     next(err)
   }
