@@ -1,23 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateTitle } from '../store'
 
 class EditTitle extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      // currentEpisode: this.props.selectedTitle.length > 0 ? this.props.selectedTitle[0].currentEpisode : '',
-      // totalEpisode: this.props.selectedTitle.length > 0 ? this.props.selectedTitle[0].totalEpisode : '',
-      // startedOn: this.props.selectedTitle.length > 0 ? this.props.selectedTitle[0].startedOn : '',
-      // finishedOn: this.props.selectedTitle.length > 0 ? this.props.selectedTitle[0].finishedOn : '',
-      // rating: this.props.selectedTitle.length > 0 ? this.props.selectedTitle[0].rating : '',
-      // personalNote: this.props.selectedTitle.length > 0 ? this.props.selectedTitle[0].personalNote : '',
-      currentEpisode: this.props && this.props.selectedTitle.length > 0 ? this.props.selectedTitle[0].currentEpisode : 0,
-      totalEpisode: this.props && this.props.selectedTitle.length > 0 ? this.props.selectedTitle[0].totalEpisode : 0,
-      startedOn: '',
-      finishedOn: '',
-      rating: '',
-      personalNote: ''
+      currentEpisode: props.selectedTitle.length > 0 ? props.selectedTitle[0].currentEpisode : 0,
+      totalEpisode: props.selectedTitle.length > 0 ? props.selectedTitle[0].totalEpisode : 0,
+      startedOn: props.selectedTitle.length > 0 && props.selectedTitle[0].startedOn ? props.selectedTitle[0].startedOn.slice(0,10) : '',
+      finishedOn: props.selectedTitle.length > 0 && props.selectedTitle[0].finishedOn ? props.selectedTitle[0].finishedOn.slice(0,10) : '',
+      rating: props.selectedTitle.length > 0 ? props.selectedTitle[0].rating : '',
+      personalNote: props.selectedTitle.length > 0 ? props.selectedTitle[0].personalNote : ''
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(ev) {
@@ -26,11 +23,18 @@ class EditTitle extends React.Component {
     })
   }
 
+  handleSubmit(ev) {
+    ev.preventDefault();
+    const merged = {...this.state, finishedOn: new Date(this.state.finishedOn), startedOn:new Date(this.state.startedOn)}
+    console.log({...this.props.selectedTitle[0], ...merged})
+    this.props.updateTitle({...this.props.selectedTitle[0], ...merged})
+  }
+
   render() {
-    console.log(this.props.selectedTitle);
+    console.log(this.state)
     return (
       <div className='edit'>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <h2>Edit progress & notes</h2>
           <label htmlFor='currentEpisode'>Current episode/chapter I'm on</label>
           <input type="number" id='currentEpisode' name='currentEpisode' value={this.state.currentEpisode} onChange={this.handleChange} />
@@ -44,11 +48,11 @@ class EditTitle extends React.Component {
           My rating:
           <select name='rating' value={this.state.rating} onChange={this.handleChange}>
             <option value=''>--Select an option--</option>
-              <option value='5'>★★★★★</option>
-              <option value='4'>★★★★</option>
-              <option value='3'>★★★</option>
-              <option value='2'>★★</option>
-              <option value='1'>★</option>
+              <option value='★★★★★'>★★★★★</option>
+              <option value='★★★★'>★★★★</option>
+              <option value='★★★'>★★★</option>
+              <option value='★★'>★★</option>
+              <option value='★'>★</option>
             </select>
           </label>
           <label htmlFor='personalNote'>My note</label>
@@ -66,4 +70,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(EditTitle)
+const mapDispatchToProps = (dispatch, {history}) => {
+  return {
+    updateTitle: (selectedTitle) => {
+      return dispatch(updateTitle(selectedTitle,history))
+    }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(EditTitle)

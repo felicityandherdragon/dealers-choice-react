@@ -41,8 +41,9 @@ const _updateTitle = (selectedTitle) => {
 
 export const updateTitle = (selectedTitle, history) => {
   return async(dispatch) => {
-    const updatedTitle = (await axios.put(`/category/title/${selectedTitle.id}`, selectedTitle)).data;
+    const updatedTitle = (await axios.put(`/api/category/title/${selectedTitle.id}`, selectedTitle)).data;
     dispatch(_updateTitle(updatedTitle));
+    history.push('/');
   }
 }
 
