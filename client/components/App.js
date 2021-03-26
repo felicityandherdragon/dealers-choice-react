@@ -20,7 +20,7 @@ class App extends React.Component {
           <Category />
           <Route exact path='/' component={AddNew} />
           <Route exact path='/add' component={AddNew} />
-          <Route path='/category/:id' component={CategoryDetail} />
+          <Route exact path='/category/:id' component={CategoryDetail} />
           <Switch>
             <Route path='/category/title/edit' component={EditTitle} />
             <Route path='/category/title/:id' component={TitleDetail} />

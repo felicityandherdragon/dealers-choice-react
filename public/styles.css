@@ -5,7 +5,7 @@
 }
 
 img {
-  width: 90%;
+  max-width: 300px;
 }
 
 ul {
@@ -22,7 +22,7 @@ h1 {
 .container {
   border-radius: 20px;
   display:flex;
-  width: 70%;
+  width:80%;
   margin: auto;
   padding: 10px;
 }
@@ -33,7 +33,7 @@ h1 {
 
 /* styles for category section */
 .category {
-  width: 25%;
+  width: 20%;
   border-radius: 10px 0 0 10px;
 }
 
@@ -87,12 +87,14 @@ h1 {
 /* styles for category detail section */
 .category-detail {
   padding-top: 20px;
-  width: 25%;
+  padding-right: 20px;
+  border-radius: 0 10px 10px 0;
+  width: 80%;
 }
 
 /* styles for title detail section */
 .title-detail {
-  width: 50%;
+  width: 80%;
   padding-right: 20px;
   border-radius: 0 10px 10px 0;
   padding-bottom: 20px;
@@ -131,7 +133,8 @@ h1 {
 
 /* styles for add new section */
 .add-new {
-  width: 75%;
+  width: 80%;
+  padding-right: 20px;
 }
 
 .add-new form {
@@ -141,7 +144,7 @@ h1 {
 
 /* styles for edit section */
 .edit {
-  width: 50%;
+  width: 80%;
   padding-right: 20px;
   border-radius: 0 10px 10px 0;
   padding-bottom: 20px;

@@ -43,9 +43,7 @@ const TitleDetail = (props) => {
         </div>
       )
     } else {
-      return (
-        <p>Loading...</p>
-      )
+      return null
     }
   } else {
     return (

@@ -6,6 +6,7 @@ class EditTitle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      cover: props.selectedTitle.length > 0 ? props.selectedTitle[0].cover : '../../public/assets/img/placeholder.jpeg',
       currentEpisode: props.selectedTitle.length > 0 ? props.selectedTitle[0].currentEpisode : 0,
       totalEpisode: props.selectedTitle.length > 0 ? props.selectedTitle[0].totalEpisode : 0,
       startedOn: props.selectedTitle.length > 0 && props.selectedTitle[0].startedOn ? props.selectedTitle[0].startedOn.slice(0,10) : '',
@@ -36,6 +37,8 @@ class EditTitle extends React.Component {
       <div className='edit'>
         <form onSubmit={this.handleSubmit}>
           <h2>Edit progress & notes</h2>
+          <label htmlFor='cover'>Cover</label>
+          <input type='text' name='cover' value={this.state.cover} onChange={this.handleChange}/>
           <label htmlFor='currentEpisode'>Current episode/chapter I'm on</label>
           <input type="number" id='currentEpisode' name='currentEpisode' value={this.state.currentEpisode} onChange={this.handleChange} />
           <label htmlFor='totalEpisode'>Total number of episodes/chapters</label>
