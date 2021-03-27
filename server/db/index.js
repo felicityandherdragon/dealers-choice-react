@@ -54,6 +54,40 @@ const syncAndSeed = async() => {
       personalNote: 'In the near future, augmented reality has become a key part of daily life. A gentle middle school girl named Yuuko "Yasako" Okonogi and her family have just moved to Daikoku City despite rumors of people disappearing. There, her grandmother, nicknamed "Mega-baa," runs a shop called Megasia that specializes in illegal tools which interact with parts of the virtual world.'
     })
 
+    const jujutsuKaisen = await Title.create({
+      name: 'Jujutsu Kaisen',
+      cover: '../../public/assets/img/Jujutsu_kaisen.jpeg',
+      currentEpisode: '143',
+      totalEpisode: '999',
+      categoryId: manga.id,
+      statusId: inProgress.id,
+      startedOn: new Date('2021-01-01'),
+      rating: '★★★',
+      personalNote: 'Jujutsu Kaisen (呪術廻戦, lit. "Sorcery Fight") is a Japanese manga series written and illustrated by Gege Akutami, serialized in Shueisha\'s Weekly Shōnen Jump since March 2018. The individual chapters of Jujutsu Kaisen are collected and published by Shueisha, with fifteen tankōbon volumes released as of March 2021.'
+    })
+
+    const thesecondsex = await Title.create({
+      name: 'The Second Sex',
+      cover: '../../public/assets/img/the_second_sex.jpeg',
+      currentEpisode: '50',
+      totalEpisode: '999',
+      categoryId: book.id,
+      statusId: inProgress.id,
+      startedOn: new Date('2021-01-01'),
+      personalNote: 'Simone de Beauvoir’s essential masterwork is a powerful analysis of the Western notion of “woman,” and a revolutionary exploration of inequality and otherness. Unabridged in English for the first time, this long-awaited edition reinstates significant portions of the original French text that were cut in the first English translation. Vital and groundbreaking, Beauvoir’s pioneering and impressive text remains as pertinent today as when it was first published, and will continue to provoke and inspire generations of men and women to come.'
+    })
+
+    const yomawari = await Title.create({
+      name: 'Yomawari',
+      cover: '../../public/assets/img/yomawari.jpg',
+      currentEpisode: '1',
+      totalEpisode: '10',
+      categoryId: game.id,
+      statusId: readyToStart.id,
+      startedOn: new Date('2021-02-19'),
+      personalNote: 'Simone de Beauvoir’s essential masterwork is a powerful analysis of the Western notion of “woman,” and a revolutionary exploration of inequality and otherness. Unabridged in English for the first time, this long-awaited edition reinstates significant portions of the original French text that were cut in the first English translation. Vital and groundbreaking, Beauvoir’s pioneering and impressive text remains as pertinent today as when it was first published, and will continue to provoke and inspire generations of men and women to come.'
+    })
+
   } catch(err) {
     console.log(err)
   }

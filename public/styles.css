@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-img {
-  max-width: 300px;
-}
-
 ul {
   list-style: none;
 }
@@ -22,7 +18,7 @@ h1 {
 .container {
   border-radius: 20px;
   display:flex;
-  width:80%;
+  width:70%;
   margin: auto;
   padding: 10px;
 }
@@ -86,10 +82,40 @@ h1 {
 
 /* styles for category detail section */
 .category-detail {
+  display: flex;
+  justify-content: start;
   padding-top: 20px;
   padding-right: 20px;
   border-radius: 0 10px 10px 0;
   width: 80%;
+}
+
+.each-title {
+  width: 200px;
+  height: 500px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: #e98847 1px 0 10px;
+  margin: 10px;
+}
+
+.each-title img {
+  width: 100%;
+}
+
+.title-brief {
+  padding: 5px;
+  margin-left: 10px;
+  color: black;
+  z-index: 2;
+}
+
+.title-brief ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.each-title a {
+  text-decoration: none;
 }
 
 /* styles for title detail section */
@@ -98,6 +124,7 @@ h1 {
   padding-right: 20px;
   border-radius: 0 10px 10px 0;
   padding-bottom: 20px;
+  display: flex;
 }
 
 .progress {
@@ -107,14 +134,21 @@ h1 {
   justify-content: center;
 }
 
+.title-info {
+  width: 50%;
+}
+
 .CTAs {
+  width: 50%;
+  padding-top: 40px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
 }
 
 .CTAs button {
-  width: 40%;
-  height: 50px;
+  width: 100%;
+  height: 40px;
+  margin-top: 5px;
   border: 0;
   border-radius: 10px;
   background-color: #e5f5c4;
@@ -129,6 +163,11 @@ h1 {
   background-color: transparent;
   color: rgb(254, 247, 239);
   text-decoration: none;
+  font-weight: bolder;
+}
+
+.CTAs img {
+  width: 100%;
 }
 
 /* styles for add new section */
@@ -137,9 +176,46 @@ h1 {
   padding-right: 20px;
 }
 
+.add-new h2 {
+  text-decoration: underline wavy #7eac34;
+}
+
 .add-new form {
   display:flex;
   flex-direction: column;
+}
+
+.add-new label {
+  font-size: 18px;
+}
+
+.add-new select {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 5px;
+  border: 1px solid #246596;
+  font-size: 18px;
+}
+
+.add-new input {
+  height: 30px;
+  border: 0;
+  border-bottom: 1px solid #246596;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.add-new button {
+  height: 40px;
+  margin-top: 10px;
+  font-size: 18px;
+  background-color: #cba6e3;
+  border: 0;
+  border-radius: 10px;
+  box-shadow:
+    inset 45px 20px 80px -36px #a34ade,
+    inset 50px 40px 109px -38px #246596;
+  color: rgb(254, 247, 239);
 }
 
 /* styles for edit section */
@@ -153,4 +229,37 @@ h1 {
 .edit form {
   display:flex;
   flex-direction: column;
+}
+
+.edit label {
+  font-size: 18px;
+}
+
+.edit select {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 5px;
+  border: 1px solid #246596;
+  font-size: 18px;
+}
+
+.edit input {
+  height: 30px;
+  border: 0;
+  border-bottom: 1px solid #246596;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.edit button {
+  height: 40px;
+  margin-top: 10px;
+  font-size: 18px;
+  background-color: #cba6e3;
+  border: 0;
+  border-radius: 10px;
+  box-shadow:
+    inset 45px 20px 80px -36px #a34ade,
+    inset 50px 40px 109px -38px #246596;
+  color: rgb(254, 247, 239);
 }

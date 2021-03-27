@@ -43,7 +43,7 @@ export const updateTitle = (selectedTitle, history) => {
   return async(dispatch) => {
     const updatedTitle = (await axios.put(`/api/category/title/${selectedTitle.id}`, selectedTitle)).data;
     dispatch(_updateTitle(updatedTitle));
-    history.push('/');
+    history.push(`/category/title/${updatedTitle.id}`);
   }
 }
 
@@ -102,7 +102,7 @@ export const addNew = (title, history) => {
     const newTitle = (await axios.post('/api/add', title)).data;
     console.log(newTitle);
     dispatch(_addNew(newTitle));
-    history.push('/');
+    history.push(`/category/title/${newTitle.id}`);
   }
 }
 
